@@ -1,0 +1,29 @@
+/* rating.component.css */
+
+div {
+  display: inline-block; /* Ensures stars are in a row */
+}
+
+.star {
+  font-size: 24px; /* Adjust the size of the stars */
+  color: #ccc; /* Default color of the stars */
+  cursor: pointer; /* Cursor style on hover */
+}
+
+.star:hover,
+.star.active {
+  color: #ffcc00; /* Color of the stars on hover or when active */
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

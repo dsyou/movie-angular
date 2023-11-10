@@ -1,0 +1,17 @@
+.rating-dialog {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.rating-dialog h2 {
+  margin-top: 0;
+}
+
+.star {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star.active {
+  color: #ffcc00; /* Kolor aktywnej gwiazdki */
+}
