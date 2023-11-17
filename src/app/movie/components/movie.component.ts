@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {RatingDialogComponent} from "../../rating/rating-dialog.component";
+import {RatingDialogComponent} from "../../rating/component/rating-dialog.component";
 import {RatingDialogData} from "../../rating/model/rating-dialog.data";
 import {Movie} from "../model/movie.data";
 

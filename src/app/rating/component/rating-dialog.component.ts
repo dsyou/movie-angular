@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {RatingDialogData} from "./model/rating-dialog.data";
+import {RatingDialogData} from "../model/rating-dialog.data";
 
 @Component({
   selector: 'rating-dialog',
