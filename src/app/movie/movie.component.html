@@ -1,5 +1,5 @@
 <div *ngFor="let movie of movies">
-  <h2>{{ movie.title }}</h2>
+  <h2>{{movie.title}}</h2>
   <p>Data produkcji: {{ movie.productionDate | date:'dd-MM-yyyy' }}</p>
   <p>Gatunek: <img src="ikonka.png" alt="Ikonka gatunku" /></p>
   <p>Średnia ocen: {{ calculateAverageRating(movie) }}</p>

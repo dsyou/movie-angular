@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RatingDialogComponent} from "../rating/rating-dialog.component";
-import {RatingDialogData} from "../rating/rating-dialog.data";
-import {Movie} from "./movie.data";
+import {RatingDialogData} from "../rating/model/rating-dialog.data";
+import {Movie} from "./model/movie.data";
 
 @Component({
   selector: 'movie',
@@ -19,7 +19,7 @@ export class MovieComponent {
   constructor(private dialog: MatDialog) {
   }
 
-  calculateAverageRating(film: any): string {
+  calculateAverageRating(film: Movie): string {
     const ratings = film.ratings;
     if (ratings.length === 0) {
       return 'Brak ocen';
