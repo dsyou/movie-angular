@@ -12,6 +12,13 @@ import {Movie} from "../model/movie.data";
 export class MovieComponent {
   @Input() movie!: Movie;
 
+  genreIcons: { [key: string]: string } = {
+    'Action': 'assets/action-icon.png',
+    'Comedy': 'assets/comedy-icon.png',
+    'Drama': 'assets/drama-icon.png',
+    // Add more genres and their icons as needed
+  };
+
   constructor(private dialog: MatDialog) {
   }
 
@@ -43,4 +50,7 @@ export class MovieComponent {
     this.movie.ratings.push(rate)
   }
 
+  getGenreIcon(genre: string): string {
+    return this.genreIcons[genre] || 'assets/default-icon.png'
+  }
 }
