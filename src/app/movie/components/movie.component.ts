@@ -1,20 +1,16 @@
 import {Component, Input} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {RatingDialogComponent} from "../rating/rating-dialog.component";
-import {RatingDialogData} from "../rating/model/rating-dialog.data";
-import {Movie} from "./model/movie.data";
+import {RatingDialogComponent} from "../../rating/rating-dialog.component";
+import {RatingDialogData} from "../../rating/model/rating-dialog.data";
+import {Movie} from "../model/movie.data";
 
 @Component({
-  selector: 'movie',
+  selector: 'movie-component',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent {
-  movies: Movie[] = [
-    {id: 1, title: 'Movie 1', productionDate: new Date(), genre: 'Akcja', ratings: [5, 7, 8]},
-    {id: 2, title: 'Movie 2', productionDate: new Date(), genre: 'Komedia', ratings: [6, 8, 9]},
-    {id: 3, title: 'Movie 3', productionDate: new Date(), genre: 'Dramat', ratings: []},
-  ];
+  @Input() movie!: Movie;
 
   constructor(private dialog: MatDialog) {
   }
@@ -44,10 +40,7 @@ export class MovieComponent {
   }
 
   handleRatingAdded(movieId: number, rate: number) {
-    const movieIndex = this.movies.findIndex((film) => film.id === movieId);
-    if (movieIndex !== -1 && rate > 0) {
-      this.movies[movieIndex].ratings.push(rate);
-    }
+    this.movie.ratings.push(rate)
   }
 
 }
