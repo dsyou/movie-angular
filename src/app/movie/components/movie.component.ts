@@ -1,10 +1,8 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RatingDialogComponent} from "../../rating/component/rating-dialog.component";
 import {RatingDialogData} from "../../rating/model/rating-dialog.data";
 import {Movie} from "../model/movie.data";
-import {Rating} from "../../rating/model/rating.data";
-import {Observable} from "rxjs";
 import {RatingHttpService} from "../../rating/services/rating-http.service";
 
 @Component({
@@ -12,10 +10,11 @@ import {RatingHttpService} from "../../rating/services/rating-http.service";
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
-export class MovieComponent {
+export class MovieComponent implements OnInit{
   @Input() movie!: Movie;
-  rates$: Observable<Rating> | undefined;
-  rate: number = 7;
+  @Output() rattingAdded = new EventEmitter<void>();
+  // rates$: Observable<Rating> | undefined;
+  rate!: number;
 
   genreIcons: { [key: string]: string } = {
     'Action': 'assets/action-icon.png',
@@ -27,16 +26,16 @@ export class MovieComponent {
   constructor(private dialog: MatDialog,
               private ratingHttpService: RatingHttpService
   ) {
-     this.ratingHttpService.getRates("1DC0F587-4E1B-47D6-A3A4-6235DEECDDC7").subscribe(
-       rate => {
-         this.rate= rate;
-         console.log(this.rate)
-       }
-     );
 
-     // this.rates$.subscribe(rating =>{
-     //   console.log('Received rating:', rating);
-     // })
+  }
+
+  ngOnInit(): void {
+    this.ratingHttpService.getRates(this.movie.uuid).subscribe(
+      rate => {
+        this.rate= rate;
+        console.log(this.rate)
+      }
+    );
   }
 
   calculateAverageRating(ratings: number): string {
@@ -46,29 +45,35 @@ export class MovieComponent {
       return 'Brak ocen';
     }
 
-
      return ratings.toFixed(2);
   }
 
-  openRatingModal(film: any): void {
+  openRatingModal(movie: Movie): void {
     const data: RatingDialogData = {
-      title: film.title,
+      title: movie.title,
       content: "",
     }
     const dialogRef: MatDialogRef<RatingDialogComponent> = this.dialog.open(RatingDialogComponent, {data});
 
-    dialogRef.afterClosed().subscribe((rate: number) => {
+    dialogRef.afterClosed().subscribe(async (rate: number) => {
       if (rate != null) {
-        this.handleRatingAdded(film.id, rate);
+        await this.handleRatingAdded(movie.uuid, rate);
       }
     });
   }
 
-  handleRatingAdded(movieId: number, rate: number) {
-    // this.movie.ratings.push(rate)
+  async handleRatingAdded(movieUuid: string, rate: number) {
+    try {
+      const response = await this.ratingHttpService.addRate(movieUuid, rate).toPromise();
+      this.rattingAdded.emit();
+      console.log('Rating added successfully:', response);
+    } catch (error) {
+      console.error('Error adding rating:', error);
+    }
   }
 
   getGenreIcon(genre: string): string {
     return this.genreIcons[genre] || 'assets/default-icon.png'
   }
+
 }

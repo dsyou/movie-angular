@@ -10,16 +10,14 @@ import {Observable} from "rxjs";
 })
 export class MoviePage {
 
-  movies$: Observable<Movie[]>;
-
-  // movies: Movie[] = [
-  //   {id: 1, title: 'Movie 1', productionDate: new Date(), genre: 'Action', ratings: [5, 7, 8]},
-  //   {id: 2, title: 'Movie 2', productionDate: new Date(), genre: 'Comedy', ratings: [6, 8, 9]},
-  //   {id: 3, title: 'Movie 3', productionDate: new Date(), genre: 'Drama', ratings: []},
-  // ];
+  movies$: Observable<Movie[]> | undefined;
 
   constructor(private movieHttService: MovieHttpService) {
-    this.movies$ = this.movieHttService.getMovies();
+    this.getMovies();
+  }
+
+  getMovies() {
+    this.movies$ = this.movieHttService.getMovies()
   }
 
 }

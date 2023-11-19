@@ -2,7 +2,7 @@
   <h2>{{movie.title}}</h2>
   <p>Data produkcji: {{ movie.productionDate | date:'dd-MM-yyyy' }}</p>
   <p>Gatunek: <img src="{{ getGenreIcon(movie.genre) }}" alt="Ikonka gatunku"/></p>
-    <p >Średnia ocen: {{ calculateAverageRating(this.rate) }}</p>
+  <p >Średnia ocen: {{ calculateAverageRating(this.rate) }}</p>
   <button (click)="openRatingModal(movie)">Dodaj ocenę</button>
 </div>
 
