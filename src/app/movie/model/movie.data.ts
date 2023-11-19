@@ -1,7 +1,7 @@
 export interface Movie {
-  id: number;
+  uuid: number;
   title: string;
   productionDate: Date;
   genre: string;
-  ratings: number[];
+  // ratings: number[];
 }

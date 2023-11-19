@@ -13,7 +13,7 @@ export class MovieHttpService {
   }
 
   public getMovies(){
-    return this.httpClient.get<Movie[]>(`${BACKEND_URL}/movies}`).pipe(share());
+    return this.httpClient.get<Movie[]>(`${BACKEND_URL}/movies`).pipe(share());
   }
 
 }

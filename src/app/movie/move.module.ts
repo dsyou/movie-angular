@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {MovieComponent} from "./components/movie.component";
 import {CommonModule} from "@angular/common";
 import {MoviePage} from "./pages/movie.page";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {MoviePage} from "./pages/movie.page";
     MovieComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ]
 })
 export class MoveModule {

@@ -1,8 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RatingDialogComponent} from "../../rating/component/rating-dialog.component";
 import {RatingDialogData} from "../../rating/model/rating-dialog.data";
 import {Movie} from "../model/movie.data";
+import {Rating} from "../../rating/model/rating.data";
+import {Observable} from "rxjs";
+import {RatingHttpService} from "../../rating/services/rating-http.service";
 
 @Component({
   selector: 'movie-component',
@@ -11,6 +14,8 @@ import {Movie} from "../model/movie.data";
 })
 export class MovieComponent {
   @Input() movie!: Movie;
+  rates$: Observable<Rating> | undefined;
+  rate: number = 7;
 
   genreIcons: { [key: string]: string } = {
     'Action': 'assets/action-icon.png',
@@ -19,17 +24,30 @@ export class MovieComponent {
     // Add more genres and their icons as needed
   };
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private ratingHttpService: RatingHttpService
+  ) {
+     this.ratingHttpService.getRates("1DC0F587-4E1B-47D6-A3A4-6235DEECDDC7").subscribe(
+       rate => {
+         this.rate= rate;
+         console.log(this.rate)
+       }
+     );
+
+     // this.rates$.subscribe(rating =>{
+     //   console.log('Received rating:', rating);
+     // })
   }
 
-  calculateAverageRating(film: Movie): string {
-    const ratings = film.ratings;
-    if (ratings.length === 0) {
+  calculateAverageRating(ratings: number): string {
+    console.log('Calculating average rating...');
+    if (!ratings) {
+      console.log('No ratings available.');
       return 'Brak ocen';
     }
 
-    const averageRating = ratings.reduce((acc: any, curr: any) => acc + curr, 0) / ratings.length;
-    return averageRating.toFixed(2);
+
+     return ratings.toFixed(2);
   }
 
   openRatingModal(film: any): void {
@@ -47,7 +65,7 @@ export class MovieComponent {
   }
 
   handleRatingAdded(movieId: number, rate: number) {
-    this.movie.ratings.push(rate)
+    // this.movie.ratings.push(rate)
   }
 
   getGenreIcon(genre: string): string {

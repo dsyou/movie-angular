@@ -9,10 +9,12 @@ import {RatingDialogData} from "../model/rating-dialog.data";
 })
 export class RatingDialogComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: RatingDialogData,
-              public dialogRef: MatDialogRef<RatingDialogComponent>
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: RatingDialogData,
+    public dialogRef: MatDialogRef<RatingDialogComponent>
   ) {
   }
+
   selectedRating: number = 0;
 
   addRating(rating: number): void {
