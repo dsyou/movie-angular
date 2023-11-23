@@ -4,6 +4,7 @@ import {RatingDialogComponent} from "../../../rating/component/rating-dialog.com
 import {RatingDialogData} from "../../../rating/model/rating-dialog.data";
 import {Movie} from "../../model/movie.data";
 import {RatingHttpService} from "../../../rating/services/rating-http.service";
+import {MOVIE_GENRE_ICONS} from "../../model/movie.genre";
 
 @Component({
   selector: 'app-movie-list-component',
@@ -16,26 +17,11 @@ export class MovieListComponent implements OnInit{
   // rates$: Observable<Rating> | undefined;
   rate!: number;
 
-  genreIcons: { [key: string]: string } = {
-    'Action': 'assets/action-icon.png',
-    'Comedy': 'assets/comedy-icon.png',
-    'Drama': 'assets/drama-icon.png',
-    // Add more genres and their icons as needed
-  };
+  protected readonly genreIcons = MOVIE_GENRE_ICONS
 
   constructor(private dialog: MatDialog,
               private ratingHttpService: RatingHttpService
   ) {
-    // form to insert
-    // menu with table of movies ?
-    // routs movie-creation movie / rates ?
-    // common module
-    // error interceptor
-    // store
-    // pipe
-    // css style
-    // admin and use in future
-    // documentation
   }
 
   ngOnInit(): void {
@@ -82,7 +68,7 @@ export class MovieListComponent implements OnInit{
   }
 
   getGenreIcon(genre: string): string {
-    return this.genreIcons[genre] || 'assets/default-icon.png'
+    return (this.genreIcons as any)[genre] || 'assets/default-icon.png'
   }
 
 }

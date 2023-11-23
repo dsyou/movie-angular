@@ -4,33 +4,33 @@
     <div>
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <input formGroupName="title" matInput placeholder="Wpisz tytuł" type="text"/>
-        <mat-error>{{'To pole jest wymagane'}}</mat-error>
+        <input formControlName="title" matInput placeholder="Wpisz tytuł" type="text"/>
+        <mat-error>{{ValidationMessages.required}}</mat-error>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field>
         <mat-label>Genre</mat-label>
-        <input formGroupName="genre" matInput placeholder="Wpisz gatunek" type="text"/>
-        <mat-error>{{'To pole jest wymagane'}}</mat-error>
+        <mat-select formControlName="genre" placeholder="Wpisz gatunek" type="text">
+          <mat-option *ngFor="let genre of MovieGenres" [value]="genre.genre">{{genre.text}}</mat-option>
+        </mat-select>
+        <mat-error>{{ValidationMessages.required}}</mat-error>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field>
         <mat-label>Production date</mat-label>
-        <input formGroupName="productionDate" matInput placeholder="Data produkcji" type="text"/>
-        <mat-error>{{'To pole jest wymagane'}}</mat-error>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
 
-<!--select box -->
-<!-- date maybe pipe should be used here -->
-
-    <!--  productionDate | date picker -->
     <div>
-
       <button color="primary" mat-raised-button>Rejestracja</button>
     </div>
   </form>
