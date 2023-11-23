@@ -10,23 +10,36 @@ import {MatInputModule} from "@angular/material/input";
 import {CommonModule} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {MoveModule} from "./movie/move.module";
+import {TopBarComponent} from "./layout/top-bar/top-bar.component";
+import {NavBarComponent} from "./layout/nav-bar/nav-bar.component";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {ContentComponent} from "./layout/content/content.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RatingDialogComponent
+    TopBarComponent,
+    NavBarComponent,
+    RatingDialogComponent,
+    ContentComponent
   ],
   imports: [
+    AppRoutingModule,
+    ReactiveFormsModule,
     MoveModule,
     BrowserModule,
-    AppRoutingModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {width: "1000px"}}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

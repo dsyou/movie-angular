@@ -26,7 +26,16 @@ export class MovieComponent implements OnInit{
   constructor(private dialog: MatDialog,
               private ratingHttpService: RatingHttpService
   ) {
-
+    // form to insert
+    // menu with table of movies ?
+    // routs movie-creation movie / rates ?
+    // common module
+    // error interceptor
+    // store
+    // pipe
+    // css style
+    // admin and use in future
+    // documentation
   }
 
   ngOnInit(): void {

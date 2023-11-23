@@ -1,0 +1,14 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <a mat-menu-item [routerLink]="['/movie-add']">
+    <mat-icon>add</mat-icon>
+    <span>Dodaj film</span>
+  </a>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Usuń film</span>
+  </button>
+</mat-menu>

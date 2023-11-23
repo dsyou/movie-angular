@@ -1,0 +1,35 @@
+<div class="container">
+  <form (ngSubmit)="submitForm()" [formGroup]="addMovieForm">
+
+    <div>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input formGroupName="title" matInput placeholder="Wpisz tytuł" type="text"/>
+        <mat-error>{{'To pole jest wymagane'}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <input formGroupName="genre" matInput placeholder="Wpisz gatunek" type="text"/>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <input formGroupName="productionDate" matInput placeholder="Data produkcji" type="text"/>
+      </mat-form-field>
+    </div>
+
+<!--select box -->
+<!-- date maybe pipe should be used here -->
+
+    <!--  productionDate | date picker -->
+    <div>
+
+      <button color="primary" mat-raised-button>Rejestracja</button>
+    </div>
+  </form>
+</div>
