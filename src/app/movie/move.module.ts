@@ -1,22 +1,22 @@
 import {NgModule} from "@angular/core";
-import {MovieComponent} from "./components/movie.component";
+import {MovieListComponent} from "./components/movie-list/movie-list.component";
 import {CommonModule} from "@angular/common";
-import {MoviePage} from "./pages/movie.page";
+import {MovieListPage} from "./pages/movie-list-page/movie-list.page";
 import {HttpClientModule} from "@angular/common/http";
-import {MovieAddFormComponent} from "./components/movie-add-form/movie.add.form.component";
+import {MovieAddFormComponent} from "./components/movie-add-form/movie-add-form.component";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
-    MoviePage,
-    MovieComponent,
+    MovieListPage,
+    MovieListComponent,
     MovieAddFormComponent
   ],
   exports: [
-    MoviePage,
-    MovieComponent
+    MovieListPage,
+    MovieListComponent
   ],
   imports: [
     CommonModule,

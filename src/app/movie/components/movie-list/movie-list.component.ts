@@ -1,16 +1,16 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {RatingDialogComponent} from "../../rating/component/rating-dialog.component";
-import {RatingDialogData} from "../../rating/model/rating-dialog.data";
-import {Movie} from "../model/movie.data";
-import {RatingHttpService} from "../../rating/services/rating-http.service";
+import {RatingDialogComponent} from "../../../rating/component/rating-dialog.component";
+import {RatingDialogData} from "../../../rating/model/rating-dialog.data";
+import {Movie} from "../../model/movie.data";
+import {RatingHttpService} from "../../../rating/services/rating-http.service";
 
 @Component({
-  selector: 'movie-component',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  selector: 'app-movie-list-component',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.css']
 })
-export class MovieComponent implements OnInit{
+export class MovieListComponent implements OnInit{
   @Input() movie!: Movie;
   @Output() rattingAdded = new EventEmitter<void>();
   // rates$: Observable<Rating> | undefined;

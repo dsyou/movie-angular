@@ -3,6 +3,10 @@
 </button>
 
 <mat-menu #menu="matMenu">
+  <a mat-menu-item [routerLink]="['']">
+    <mat-icon>list</mat-icon>
+    <span>Lista filmów</span>
+  </a>
   <a mat-menu-item [routerLink]="['/movie-add']">
     <mat-icon>add</mat-icon>
     <span>Dodaj film</span>

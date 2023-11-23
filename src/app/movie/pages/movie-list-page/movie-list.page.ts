@@ -1,14 +1,14 @@
 import {Component} from "@angular/core";
-import {Movie} from "../model/movie.data";
-import {MovieHttpService} from "../services/movie-http.service";
+import {Movie} from "../../model/movie.data";
+import {MovieHttpService} from "../../services/movie-http.service";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: "movie-page",
-  templateUrl: './movie.page.html',
-  styleUrls: ['./movie.page.css']
+  selector: "app-movie-list-page",
+  templateUrl: './movie-list.page.html',
+  styleUrls: ['./movie-list.page.css']
 })
-export class MoviePage {
+export class MovieListPage {
 
   movies$: Observable<Movie[]> | undefined;
 

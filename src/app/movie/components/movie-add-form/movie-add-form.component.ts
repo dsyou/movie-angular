@@ -1,11 +1,11 @@
 import {Component} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MovieAddForm} from "./movie.add.form";
+import {MovieAddForm} from "./movie-add-form";
 
 @Component({
-    selector: 'movie-add-form',
-    templateUrl: './movie.add.form.component.html',
-    styleUrls: ['./movie.add.form.component.css']
+    selector: 'app-movie-add-form',
+    templateUrl: './movie-add-form.component.html',
+    styleUrls: ['./movie-add-form.component.css']
   }
 )
 export class MovieAddFormComponent {

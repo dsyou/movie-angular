@@ -1,0 +1,3 @@
+<div *ngIf="movies$|async as movies">
+  <app-movie-list-component *ngFor="let movie of movies" [movie]="movie" (rattingAdded)="getMovies()"></app-movie-list-component>
+</div>
